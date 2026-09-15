@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - SkillSwap</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+
+    <div id="navbar-container"></div>
+
+    <main class="container profile-container">
+        
+        <div class="profile-header">
+            <div class="profile-top">
+                <div class="profile-avatar-wrapper">
+                    <div class="profile-avatar" id="profile-avatar">U</div>
+                </div>
+                <div class="profile-info">
+                    <h1 id="profile-name">User Name</h1>
+                    <div class="profile-meta">
+                        <span id="profile-location">📍 Location</span>
+                        <span id="profile-college">🎓 College</span>
+                        <span id="profile-availability">⏰ Any time</span>
+                        <span id="profile-joined">📅 Member</span>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="stat-box">
+                            <div class="stat-num" id="stat-rating">0.0/5.0</div>
+                            <div class="stat-label">Rating</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-num" id="stat-reviews">0</div>
+                            <div class="stat-label">Reviews</div>
+                        </div>
+                    </div>
+                    <div class="profile-actions" id="profile-actions">
+                        <!-- Buttons injected via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-grid">
+            <div class="main-column">
+                <div class="profile-section">
+                    <h2>About Me</h2>
+                    <p id="profile-bio">Bio goes here...</p>
+                </div>
+
+                <div class="profile-section">
+                    <h2>Skills I Can Teach</h2>
+                    <div class="skills-wrapper" id="skills-teach">
+                        <!-- Tags injected via JS -->
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h2>Skills I Want to Learn</h2>
+                    <div class="skills-wrapper" id="skills-learn">
+                        <!-- Tags injected via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-column">
+                <div class="profile-section">
+                    <h2>Recent Reviews</h2>
+                    <div id="profile-reviews">
+                        <!-- Reviews injected via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Edit Profile Modal -->
+    <div id="edit-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Edit Profile</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="edit-form">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="edit-name" class="form-control" required>
+                    </div>
+                    <div class="form-row" style="display:flex; gap:10px;">
+                        <div class="form-group" style="flex:1;">
+                            <label>Location</label>
+                            <input type="text" id="edit-location" class="form-control" required>
+                        </div>
+                        <div class="form-group" style="flex:1;">
+                            <label>College</label>
+                            <input type="text" id="edit-college" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Bio</label>
+                        <textarea id="edit-bio" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Can Teach (comma separated)</label>
+                        <input type="text" id="edit-teach" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Want to Learn (comma separated)</label>
+                        <input type="text" id="edit-learn" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Availability (e.g., Weekends, Evenings)</label>
+                        <input type="text" id="edit-availability" class="form-control" placeholder="Weekends, Mon-Wed Evenings...">
+                    </div>
+                    
+                    <div class="d-flex justify-between gap-1 mt-2">
+                        <button type="button" class="btn btn-secondary cancel-btn" style="flex:1;">Cancel</button>
+                        <button type="submit" class="btn btn-primary" style="flex:1;">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Request Exchange Modal (Only if not own profile) -->
+    <div id="request-modal" class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Request Skill Exchange</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>You are sending a request to <strong><span id="modal-user-name"></span></strong>.</p>
+                <div class="mt-1 mb-2">
+                    <p class="text-muted" style="font-size: 0.9rem;">They can teach: <span id="modal-teach-skills" style="color: var(--primary-color); font-weight: 500;"></span></p>
+                    <p class="text-muted" style="font-size: 0.9rem;">They want to learn: <span id="modal-learn-skills" style="color: var(--warning-color); font-weight: 500;"></span></p>
+                </div>
+                
+                <form id="exchange-form">
+                    <div class="form-group">
+                        <label for="request-message">Your Message</label>
+                        <textarea id="request-message" class="form-control" rows="4" required placeholder="Hi! I'd love to exchange skills."></textarea>
+                    </div>
+                    <div class="d-flex justify-between gap-1 mt-2">
+                        <button type="button" class="btn btn-secondary cancel-btn" style="flex:1;">Cancel</button>
+                        <button type="submit" class="btn btn-primary" style="flex:1;">Send Request</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>

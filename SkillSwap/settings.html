@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - SkillSwap</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div id="navbar-container"></div>
+
+    <main class="container" style="padding: 40px 20px; max-width: 800px;">
+        <h1 class="mb-3" style="color: var(--primary-color);">Account Settings</h1>
+
+        <div class="card mb-3">
+            <h2 class="mb-2">Change Password</h2>
+            <form id="password-form">
+                <div class="form-group">
+                    <label>Current Password</label>
+                    <input type="password" id="current-password" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>New Password</label>
+                    <input type="password" id="new-password" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Confirm New Password</label>
+                    <input type="password" id="confirm-password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary mt-1">Update Password</button>
+            </form>
+        </div>
+
+        <div class="card mb-3">
+            <h2 class="mb-2">Notifications</h2>
+            <div class="form-group d-flex align-center gap-1">
+                <input type="checkbox" id="notif-email" checked style="width:18px; height:18px;">
+                <label for="notif-email" style="margin:0;">Email Notifications</label>
+            </div>
+            <div class="form-group d-flex align-center gap-1">
+                <input type="checkbox" id="notif-browser" checked style="width:18px; height:18px;">
+                <label for="notif-browser" style="margin:0;">Browser Notifications</label>
+            </div>
+            <button class="btn btn-primary mt-1" onclick="showToast('Notification settings saved!')">Save Preferences</button>
+        </div>
+
+        <div class="card" style="border-color: var(--danger-color);">
+            <h2 class="mb-2" style="color: var(--danger-color);">Danger Zone</h2>
+            <p class="mb-2 text-muted">Once you delete your account, there is no going back. Please be certain.</p>
+            <button class="btn btn-danger" onclick="deleteAccount()">Delete Account</button>
+        </div>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+</html>

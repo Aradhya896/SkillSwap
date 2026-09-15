@@ -1,0 +1,62 @@
+/* Ratings Page Styles */
+.ratings-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.rating-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+}
+
+.rating-header {
+    margin-bottom: 20px;
+}
+
+.target-user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: var(--bg-color);
+    border-radius: var(--border-radius);
+}
+
+.stars-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-direction: row-reverse; /* For CSS sibling selector trick */
+}
+
+.star-input {
+    display: none;
+}
+
+.star-label {
+    font-size: 3rem;
+    color: #D1D5DB;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.star-input:checked ~ .star-label {
+    color: var(--warning-color);
+}
+
+.star-label:hover,
+.star-label:hover ~ .star-label {
+    color: var(--warning-color);
+}
+
+.review-textarea {
+    width: 100%;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nearby Partners - SkillSwap</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/nearby.css">
+    <link rel="stylesheet" href="css/browse.css"> <!-- Reusing some card styles -->
+</head>
+<body>
+
+    <div id="navbar-container"></div>
+
+    <main class="nearby-container">
+        <div class="nearby-header">
+            <h1>Find Skill Partners Nearby</h1>
+            <p class="text-muted">Connect with people in your local area for in-person skill exchanges.</p>
+        </div>
+
+        <div class="map-simulation" id="map-simulation">
+            <!-- Map markers injected via JS -->
+        </div>
+
+        <div class="nearby-list-header">
+            <h2>Skill Partners Near You</h2>
+            <select class="form-control" style="width: 200px;">
+                <option value="15">Within 15 km</option>
+                <option value="10">Within 10 km</option>
+                <option value="5">Within 5 km</option>
+            </select>
+        </div>
+
+        <div class="nearby-grid" id="nearby-grid">
+            <!-- Nearby users injected via JS -->
+        </div>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/nearby.js"></script>
+</body>
+</html>

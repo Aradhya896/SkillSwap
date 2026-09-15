@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - SkillSwap</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+    <div id="navbar-container"></div>
+
+    <div class="auth-page">
+        <div class="card auth-card" style="max-width: 600px;">
+            <div class="auth-header">
+                <h1>Join SkillSwap</h1>
+                <p>Create an account to start sharing skills</p>
+            </div>
+
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" class="form-control" required placeholder="John Doe">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" required placeholder="you@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" class="form-control" required placeholder="City, State">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" class="form-control" required placeholder="Min 6 characters">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" class="form-control" required placeholder="Re-enter password">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="college">College / Organization</label>
+                    <input type="text" id="college" class="form-control" placeholder="Optional">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="can-teach">Skills I Can Teach (comma separated)</label>
+                        <input type="text" id="can-teach" class="form-control" required placeholder="Java, Guitar, Cooking">
+                    </div>
+                    <div class="form-group">
+                        <label for="wants-learn">Skills I Want to Learn (comma separated)</label>
+                        <input type="text" id="wants-learn" class="form-control" required ml placeholder="Python, French">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="bio">Short Bio</label>
+                    <textarea id="bio" class="form-control" rows="3" required placeholder="Tell us a little about yourself..."></textarea>
+                </div>
+                
+                <div id="form-error" class="error-message" style="margin-bottom: 15px; text-align:center;"></div>
+
+                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+            </form>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="login.html">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            redirectIfAuthenticated();
+
+            const registerForm = document.getElementById('register-form');
+            
+            registerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const location = document.getElementById('location').value.trim();
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+                const college = document.getElementById('college').value.trim();
+                const canTeachRaw = document.getElementById('can-teach').value.trim();
+                const wantsLearnRaw = document.getElementById('wants-learn').value.trim();
+                const bio = document.getElementById('bio').value.trim();
+                
+                const formError = document.getElementById('form-error');
+                formError.classList.remove('active');
+                
+                if (password.length < 6) {
+                    formError.innerText = "Password must be at least 6 characters long.";
+                    formError.classList.add('active');
+                    return;
+                }
+                
+                if (password !== confirmPassword) {
+                    formError.innerText = "Passwords do not match.";
+                    formError.classList.add('active');
+                    return;
+                }
+                
+                const users = getUsers();
+                if (users.find(u => u.email === email)) {
+                    formError.innerText = "Email is already registered.";
+                    formError.classList.add('active');
+                    return;
+                }
+                
+                const canTeach = canTeachRaw.split(',').map(s => s.trim()).filter(s => s);
+                const wantsToLearn = wantsLearnRaw.split(',').map(s => s.trim()).filter(s => s);
+                
+                if (canTeach.length === 0 || wantsToLearn.length === 0) {
+                    formError.innerText = "Please list at least one skill for both teaching and learning.";
+                    formError.classList.add('active');
+                    return;
+                }
+                
+                const newUser = {
+                    id: Date.now(), // Generate unique ID
+                    name,
+                    email,
+                    password,
+                    location,
+                    college,
+                    bio,
+                    canTeach,
+                    wantsToLearn,
+                    rating: 0,
+                    reviews: []
+                };
+                
+                users.push(newUser);
+                saveUsers(users);
+                
+                setCurrentUser(newUser);
+                showToast('Registration successful!');
+                setTimeout(() => {
+                    window.location.href = 'browse.html';
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>

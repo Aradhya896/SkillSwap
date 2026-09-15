@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Review - SkillSwap</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ratings.css">
+</head>
+<body>
+
+    <div id="navbar-container"></div>
+
+    <main class="ratings-container">
+        <div class="rating-card">
+            <div class="rating-header">
+                <h2>Leave a Review</h2>
+                <p class="text-muted">How was your skill exchange experience?</p>
+            </div>
+
+            <div class="target-user">
+                <div class="avatar" id="target-avatar">U</div>
+                <h3 id="target-name">User Name</h3>
+            </div>
+
+            <form id="rating-form">
+                <div class="stars-container">
+                    <input type="radio" name="rating" id="star5" class="star-input" value="5">
+                    <label for="star5" class="star-label">★</label>
+                    
+                    <input type="radio" name="rating" id="star4" class="star-input" value="4">
+                    <label for="star4" class="star-label">★</label>
+                    
+                    <input type="radio" name="rating" id="star3" class="star-input" value="3">
+                    <label for="star3" class="star-label">★</label>
+                    
+                    <input type="radio" name="rating" id="star2" class="star-input" value="2">
+                    <label for="star2" class="star-label">★</label>
+                    
+                    <input type="radio" name="rating" id="star1" class="star-input" value="1">
+                    <label for="star1" class="star-label">★</label>
+                </div>
+
+                <div class="form-group">
+                    <textarea id="review-text" class="form-control review-textarea" rows="5" required placeholder="Write your review here... Be honest and constructive!"></textarea>
+                </div>
+
+                <div class="d-flex justify-between gap-1">
+                    <button type="button" class="btn btn-secondary" style="flex:1;" onclick="history.back()">Cancel</button>
+                    <button type="submit" class="btn btn-primary" style="flex:1;">Submit Review</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/ratings.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+/* Requests Page Styles */
+.requests-container {
+    padding: 40px 20px;
+    max-width: 1000px;
+}
+
+.requests-header {
+    margin-bottom: 30px;
+}
+
+.requests-header h1 {
+    color: var(--primary-color);
+}
+
+.requests-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 25px;
+}
+
+.tab-btn {
+    padding: 15px 25px;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+}
+
+.tab-btn:hover {
+    color: var(--text-main);
+}
+
+.tab-btn.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.request-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    gap: 20px;
+}
+
+.req-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.req-content {
+    flex-grow: 1;
+}
+
+.req-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.req-header h3 {
+    margin-bottom: 5px;
+}
+
+.req-date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.req-skills {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.req-message {
+    background-color: var(--bg-color);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    font-style: italic;
+    margin-bottom: 15px;
+    border-left: 4px solid var(--border-color);
+}
+
+.req-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-pending {
+    background-color: #FEF3C7;
+    color: #D97706;
+}
+
+.status-accepted {
+    background-color: #D1FAE5;
+    color: #059669;
+}
+
+.status-rejected {
+    background-color: #FEE2E2;
+    color: #DC2626;
+}
+
+@media (max-width: 600px) {
+    .request-card {
+        flex-direction: column;
+    }
+}

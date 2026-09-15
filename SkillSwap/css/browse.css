@@ -1,0 +1,138 @@
+/* Browse Page Styles */
+.browse-container {
+  padding: 40px 20px;
+}
+
+.browse-header {
+  margin-bottom: 30px;
+}
+
+.browse-header h1 {
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.search-section {
+  background-color: var(--card-bg);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 30px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 250px;
+  position: relative;
+}
+
+.search-box input {
+  padding-left: 35px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+.filter-box {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.filter-box select {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  outline: none;
+}
+
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.user-card {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.user-card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.user-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 2px;
+}
+
+.user-info p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.user-rating {
+  color: var(--warning-color);
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.user-bio {
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+.skills-section {
+  margin-bottom: 15px;
+}
+
+.skills-section h4 {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.card-actions .btn {
+  flex: 1;
+}
+
+@media (max-width: 600px) {
+  .search-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
